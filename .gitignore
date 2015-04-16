@@ -1,0 +1,16 @@
+logs/*
+[Dd]ebug/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+*.suo
+*.user
+*.log
+*.tmp
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+_ReSharper*/
+**/packages/*
