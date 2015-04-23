@@ -71,6 +71,7 @@
     <Compile Include="Messages\Basic\RequestMessage.cs" />
     <Compile Include="Messages\Basic\ResponseMessage.cs" />
     <Compile Include="MyEntryPoint.cs" />
+    <Compile Include="Policy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registery.cs" />
     <Compile Include="Handlers\Basic\RequestHandler.cs" />

@@ -8,6 +8,8 @@ namespace MyFT
         {
             EnableInMemoryTransport();
 
+            Global.Policy<ErrorPolicy>();
+
             Channel(x => x.Uri)
                 .AcceptsMessagesInNamespace(typeof(MyEntryPoint).Namespace)
                 .ReadIncoming();
