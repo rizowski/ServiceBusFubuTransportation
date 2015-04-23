@@ -1,4 +1,6 @@
 ﻿using FubuTransportation.Configuration;
+using MyFT.Handlers.Ignored;
+using MyFT.Messages.Ignored;
 
 namespace MyFT
 {
@@ -8,17 +10,21 @@ namespace MyFT
         {
             EnableInMemoryTransport();
 
-            Channel(x => x.Uri)
-                .AcceptsMessagesInNamespace(typeof(MyEntryPoint).Namespace)
+            //Channel(x => x.Simple)
+            //    //.AcceptsMessagesInNamespace(typeof(Basic.RequestHandler).Namespace)
+            //    .AcceptsMessagesInNamespace(typeof(MyEntryPoint).Namespace)
+            //    .ReadIncoming();
+
+            Channel(x => x.Ignore)
+                .AcceptsMessagesInAssemblyContainingType<MultiplyMessage>()
                 .ReadIncoming();
 
             //Handlers.DisableDefaultHandlerSource();
-
             //Handlers.FindBy(x =>
             //{
-            //    x.ExcludeMethods(y => y.ReturnType == typeof (IgnoredResponse));
-            //    x.IncludeTypesImplementing<IHandle>();
-            //});
+            //    x.ExcludeTypes(type => type == typeof (SumHandler));
+                
+            //}); // I am sad this doesn't work
         }
     }
 }

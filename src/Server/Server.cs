@@ -1,6 +1,7 @@
 ﻿using System;
 using FubuTransportation;
 using MyFT;
+using MyFT.Messages.Ignored;
 
 namespace Server
 {
@@ -12,7 +13,10 @@ namespace Server
             var application = applicationSource.BuildApplication();
             var runtime = application.Bootstrap();
             var bus = runtime.Factory.Get<IServiceBus>();
-            bus.Send(new StartRequest());
+
+            bus.Send(new StartMultiplyRequest());
+            bus.Send(new StartSumRequest());
+
             Console.Read();
         }
     }

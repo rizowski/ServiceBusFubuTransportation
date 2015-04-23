@@ -7,9 +7,11 @@ namespace MyFT
     {
         public Settings()
         {
-            Uri = "memory://simple".ToUri();
+            Simple = "memory://simple".ToUri();
+            Ignore = "memory://ignore".ToUri();
         }
 
-        public Uri Uri { get; set; }
+        public Uri Simple { get; set; }
+        public Uri Ignore { get; set; }
     }
 }
