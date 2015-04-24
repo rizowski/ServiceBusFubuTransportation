@@ -11,7 +11,7 @@ namespace MyFT
         {
             //FubuTransport.AllQueuesInMemory = true;   // IMPORTANT FOR MEMORY URI'S
             return FubuTransport
-                .For<Registery>()
+                .For<Registry>()
                 .StructureMap(new Container());
         }
     }
