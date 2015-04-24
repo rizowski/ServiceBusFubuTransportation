@@ -1,4 +1,7 @@
-﻿using FubuTransportation.Configuration;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using FubuTransportation.Configuration;
+using MyFT.Jobs;
 
 namespace MyFT
 {
@@ -9,16 +12,20 @@ namespace MyFT
             EnableInMemoryTransport();
 
             Channel(x => x.Uri)
-                .AcceptsMessagesInNamespace(typeof(MyEntryPoint).Namespace)
+                .AcceptsMessagesInNamespace(typeof (MyEntryPoint).Namespace)
                 .ReadIncoming();
 
-            //Handlers.DisableDefaultHandlerSource();
+            Polling.RunJob<ImNeedyJob>().ScheduledAtInterval<NeedynessInterval>(x => x.Interval);
+        }
 
-            //Handlers.FindBy(x =>
-            //{
-            //    x.ExcludeMethods(y => y.ReturnType == typeof (IgnoredResponse));
-            //    x.IncludeTypesImplementing<IHandle>();
-            //});
+        public class NeedynessInterval
+        {
+            public NeedynessInterval()
+            {
+                Interval = TimeSpan.FromSeconds(0.5).Milliseconds;
+            }
+
+            public double Interval { get; set; }
         }
     }
 }
