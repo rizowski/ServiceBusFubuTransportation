@@ -1,5 +1,4 @@
 ﻿using System;
-using FubuTransportation;
 using MyFT;
 
 namespace Server
@@ -10,9 +9,8 @@ namespace Server
         {
             var applicationSource = new MyEntryPoint();
             var application = applicationSource.BuildApplication();
-            var runtime = application.Bootstrap();
-            var bus = runtime.Factory.Get<IServiceBus>();
-            bus.Send(new StartRequest());
+            application.Bootstrap();
+
             Console.Read();
         }
     }
